@@ -17,8 +17,8 @@ class SkillFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->userName(),
-            'description'=> fake()->words(),
+            'name' => fake()->word(),
+            'description'=> fake()->sentence(),
             'category'=> fake()->word(),
         ];
         }
