@@ -10,10 +10,12 @@ class SkillController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
-    }
+public function index()
+{
+    $skills = Skill::all(); // ή ότι query θέλεις
+    $randomSkill = Skill::inRandomOrder()->first();
+    return view('skills', compact('skills', 'randomSkill'));
+}
 
     /**
      * Show the form for creating a new resource.
@@ -35,9 +37,10 @@ class SkillController extends Controller
      * Display the specified resource.
      */
     public function show(Skill $skill)
-    {
-        //
-    }
+{
+
+    return view('skill', compact('skill'));
+}
 
     /**
      * Show the form for editing the specified resource.
