@@ -14,7 +14,7 @@ public function index()
 {
     $skills = Skill::all(); // ή ότι query θέλεις
     $randomSkill = Skill::inRandomOrder()->first();
-    return view('skills', compact('skills', 'randomSkill'));
+    return view('skills.skills', compact('skills', 'randomSkill'));
 }
 
     /**
@@ -22,7 +22,7 @@ public function index()
      */
     public function create()
     {
-        //
+        return view('skills.create');
     }
 
     /**
@@ -39,7 +39,7 @@ public function index()
     public function show(Skill $skill)
 {
 
-    return view('skill', compact('skill'));
+    return view('skills.skill', compact('skill'));
 }
 
     /**
