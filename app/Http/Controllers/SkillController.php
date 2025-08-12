@@ -28,10 +28,20 @@ public function index()
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
+public function store(Request $request)
+{
+    $validated = $request->validate([
+        'name' => 'required|min:3|max:50'
+    ]);
+
+    Skill::create([
+        'name' => $validated['name'],
+        'description'=> fake()->sentence(),
+        'category'=> fake()->word(),])
+    ;
+
+    return redirect('skills')->with('success', 'Category created!');;
+}
 
     /**
      * Display the specified resource.
