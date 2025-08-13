@@ -16,6 +16,9 @@ class SkillFactory extends Factory
      */
     public function definition(): array
     {
+        do {
+        $name = fake()->word();
+    } while (strlen($name) < 3);
         return [
             'name' => fake()->word(),
             'description'=> fake()->sentence(),

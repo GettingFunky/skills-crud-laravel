@@ -8,7 +8,13 @@
             <label for="name" class="block text-sm font-medium">Name</label>
             <input type="text" name="name" id="name" value="{{ old('name') }}" required
                    class="w-full border px-3 py-2 rounded">
-            @error('name')
+            <label for="description" class="block text-sm font-medium">Description</label>
+            <input type="text" name="description" id="description" value="{{ old('description') }}" required
+                   class="w-full border px-3 py-2 rounded">
+            <label for="name" class="block text-sm font-medium">Name</label>
+            <input type="text" name="category" id="category" value="{{ old('category') }}" required
+                   class="w-full border px-3 py-2 rounded">
+            @error('name', 'description', 'category')
                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
         </div>

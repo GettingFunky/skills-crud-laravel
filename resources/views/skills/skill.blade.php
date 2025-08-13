@@ -4,6 +4,12 @@
     <p>
         This skill has an ID of <strong>{{ $skill->id }}</strong>
     </p>
+    <p>
+        Description: <strong>{{ $skill->description }}</strong>
+    </p>
+    <p>
+        Category: <strong>{{ $skill->category }}</strong>
+    </p>
 
     <h2>
         <a href="/skills" class="text-blue-400 underline">Back To Skills</a>
