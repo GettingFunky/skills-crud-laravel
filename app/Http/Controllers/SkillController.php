@@ -32,17 +32,20 @@ class SkillController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|min:3|max:50'
+            'name' => 'required|min:3|max:50',
+            'description' => 'required|min:3|max:50',
+            'category' => 'required|min:3|max:50',
+
         ]);
 
         Skill::create([
             'name' => $validated['name'],
-            'description' => fake()->sentence(),
-            'category' => fake()->word(),
+            'description' => $validated['description'],
+            'category' => $validated['category'],
         ])
         ;
 
-        return redirect('skills')->with('success', 'Category created!');
+        return redirect('skills')->with('success', 'Skill created!');
         ;
     }
 
@@ -58,17 +61,32 @@ class SkillController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Skill $skill)
-    {
-        //
-    }
+        public function edit(Skill $skill)
+        {
+            return view('skills.edit', compact('skill'));
+        }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Skill $skill)
-    {
-        //
+       {
+        $validated = $request->validate([
+            'name' => 'required|min:3|max:50',
+            'description' => 'required|min:3|max:50',
+            'category' => 'required|min:3|max:50',
+
+        ]);
+
+        $skill -> update([
+            'name' => $validated['name'],
+            'description' => $validated['description'],
+            'category' => $validated['category'],
+        ])
+        ;
+
+         return redirect()->route('skills.index')->with('success', 'Skill updated!');
+        
     }
 
     /**
