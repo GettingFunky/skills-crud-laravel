@@ -11,6 +11,12 @@
         Category: <strong>{{ $skill->category }}</strong>
     </p>
 
+    <form action="{{ route('skills.destroy', $skill) }}" method="POST" onsubmit="return confirm('Delete this category?');">
+        @csrf
+        @method('DELETE')
+        <button class="text-red-500">Delete</button>
+    </form>
+
     <h2>
         <a href="/skills" class="text-blue-400 underline">Back To Skills</a>
     </h2>

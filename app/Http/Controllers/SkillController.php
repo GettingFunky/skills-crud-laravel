@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Skill;
 use Illuminate\Http\Request;
+use App\Http\Requests\SkillRequest;
 
 class SkillController extends Controller
 {
@@ -12,7 +13,7 @@ class SkillController extends Controller
      */
     public function index()
     {
-        $skills = Skill::all(); // ή ότι query θέλεις
+        $skills = Skill::paginate(10); // ή ότι query θέλεις
         $randomSkill = Skill::inRandomOrder()->first();
         $newSkill = Skill::factory()->make();
         return view('skills.skills', compact('skills', 'randomSkill', 'newSkill'));
@@ -29,19 +30,14 @@ class SkillController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SkillRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|min:3|max:50',
-            'description' => 'required|min:3|max:50',
-            'category' => 'required|min:3|max:50',
 
-        ]);
 
         Skill::create([
-            'name' => $validated['name'],
-            'description' => $validated['description'],
-            'category' => $validated['category'],
+            'name' => $request->name,
+            'description' => $request->description,
+            'category' => $request->category,
         ])
         ;
 
@@ -69,19 +65,13 @@ class SkillController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Skill $skill)
+    public function update(SkillRequest $request, Skill $skill)
        {
-        $validated = $request->validate([
-            'name' => 'required|min:3|max:50',
-            'description' => 'required|min:3|max:50',
-            'category' => 'required|min:3|max:50',
-
-        ]);
 
         $skill -> update([
-            'name' => $validated['name'],
-            'description' => $validated['description'],
-            'category' => $validated['category'],
+            'name' => $request->name,
+            'description' => $request->description,
+            'category' => $request->category,
         ])
         ;
 
@@ -94,6 +84,7 @@ class SkillController extends Controller
      */
     public function destroy(Skill $skill)
     {
-        //
+        $skill->delete();
+        return redirect()->route('skills.index')->with('success', 'Skill deleted!'); 
     }
 }
