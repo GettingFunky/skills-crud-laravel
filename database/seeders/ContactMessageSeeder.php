@@ -2,21 +2,20 @@
 
 namespace Database\Seeders;
 
-use App\Models\Skill;
+use App\Models\ContactMessage;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
-class SkillSeeder extends Seeder
+class ContactMessageSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-    Skill::factory()
+        ContactMessage::factory()
         ->count(50)
         ->create();
-}
+
+    }
 }

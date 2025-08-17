@@ -1,5 +1,8 @@
 <x-layout title="Dashboard">
-    <a href="/skills/create"><button class="bg-blue-500 text-white px-4 py-2 rounded">Add a new skill</button></a>
+    <div class="flex space-between">
+        <a href="/skills/create"><button class="bg-blue-500 text-white px-4 py-2 rounded">Add a new skill</button></a>
+        <a href="/skills/create"><button class="bg-blue-500 text-white px-4 py-2 rounded">Contact Us (Send us a message)</button></a>
+    </div>
 
     <h1 class="text-blue-400 text-xl">Dashboard</h1>
     <div class="space-between">
@@ -8,7 +11,7 @@
                 {{ $randomSkill->id }})</a>
         </p>
         <p class="text-red-900 hover:underline">
-<!-- 
+            <!-- 
             @if(session('success'))
                 <div class="mb-4 text-green-700 bg-green-100 px-4 py-2 rounded">
                     {{ session('success') }}
