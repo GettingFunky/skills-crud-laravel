@@ -1,7 +1,7 @@
 <x-layout title="Dashboard">
-    <div class="flex space-between">
+    <div class="flex space-between gap-2 w-auto">
         <a href="/skills/create"><button class="bg-blue-500 text-white px-4 py-2 rounded">Add a new skill</button></a>
-        <a href="/skills/create"><button class="bg-blue-500 text-white px-4 py-2 rounded">Contact Us (Send us a message)</button></a>
+        <a href="/contact"><button class="bg-blue-500 text-white px-4 py-2 rounded">Contact Us (Send us a message)</button></a>
     </div>
 
     <h1 class="text-blue-400 text-xl">Dashboard</h1>
