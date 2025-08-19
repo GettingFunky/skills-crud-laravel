@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactMessageRequest;
 use App\Models\ContactMessage;
+use App\Mail\ContactMessageReceived;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactMessageController extends Controller
 {
@@ -17,13 +19,15 @@ class ContactMessageController extends Controller
     {
 
 
-        ContactMessage::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'subject' => $request->subject,
-            'message' => $request->message,
+$contactMessage = ContactMessage::create([
+    'name' => $request->name,
+    'email' => $request->email,
+    'subject' => $request->subject,
+    'message' => $request->message,
+]);
 
-        ])
+Mail::to('admin@example.com')->send(new ContactMessageReceived($contactMessage));
+
         ;
         return redirect('/contact')->with('success', 'Message sent!');
     }
